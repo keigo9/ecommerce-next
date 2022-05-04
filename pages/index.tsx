@@ -1,8 +1,10 @@
 import type { InferGetStaticPropsType } from "next"
 import getAllProduct from "@framework/product/get-all-product"
+import { getConfig } from "@framework/api/config"
 
 export async function getStaticProps() {
-  const products = await getAllProduct();
+  const config = getConfig();
+  const products = await getAllProduct(config)
   
   return { 
     props: {

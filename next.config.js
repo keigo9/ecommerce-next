@@ -1,10 +1,13 @@
-module.exports = {
-  reactStrictMode: true,
-  webpackDevMiddleware: config => {
-    config.watchOptions = {
-      poll: 800,
-      aggregateTimeout: 300,
-    }
-    return config
+const { withFrameworkConfig } = require("./framework/common/config")
+
+module.exports = withFrameworkConfig({
+  framework: {
+    name: "shopify"
   },
-}
+  i18n: {
+    locales: ["en-US", "es"],
+    defaultLocale: "en-US"
+  }
+})
+
+console.log("next.config.js", JSON.stringify(module.exports, null, 2))
